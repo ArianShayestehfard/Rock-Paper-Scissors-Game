@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int userWins = 0, compWins = 0, ties = 0, random_number, x; 
+
+    srand(time(NULL)); 
+
+    while (1) {
+        printf("\nPlease select one of the options below\n\n");
+        printf("Stone : (1)\n");
+        printf("Paper : (2)\n");
+        printf("Scissor : (3)\n");
+        printf("Exit : (4)\n\n");
+        
+        scanf("%d", &x);
+        
+        if (x == 4) {
+            break; 
+        }
+
+        // Generate random number between 1 and 3 
+        random_number = rand() % 3 + 1;
+
+        switch (x) {
+            case 1: // User Stone
+                if (random_number == 1) {
+                    printf("It's a Tie\n");
+                    ties++;
+                } else if (random_number == 2) {
+                    printf("Computer wins\n");
+                    compWins++;
+                } else {
+                    printf("You win\n");
+                    userWins++;
+                }
+                break;
+            case 2: // User Paper
+                if (random_number == 1) {
+                    printf("You win\n");
+                    userWins++;
+                } else if (random_number == 2) {
+                    printf("It's a Tie\n");
+                    ties++;
+                } else {
+                    printf("Computer wins\n");
+                    compWins++;
+                }
+                break;
+            case 3: // User Scissor
+                if (random_number == 1) {
+                    printf("Computer wins\n");
+                    compWins++;
+                } else if (random_number == 2) {
+                    printf("You win\n");
+                    userWins++;
+                } else {
+                    printf("It's a Tie\n");
+                    ties++;
+                }
+                break;
+            default:
+                printf("Invalid choice\n");
+                break;
+        }
+    }
+
+    printf("User Wins: %d\n", userWins);
+    printf("Computer Wins: %d\n", compWins);
+    printf("Ties: %d\n", ties);
+
+    return 0;
+}
